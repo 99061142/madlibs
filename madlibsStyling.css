@@ -45,7 +45,7 @@ input{
 
 /* Submit buttons */
 
-input:nth-of-type(8){
+input:nth-of-type(){
 	margin-right: 240px;
 	padding: 2px 5px;
 }
