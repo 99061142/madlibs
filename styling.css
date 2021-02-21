@@ -1,0 +1,79 @@
+/* Browser */
+
+body{
+	background-color: grey;
+	margin: 0px auto;
+	padding: 0px 450px;
+}
+
+h1{
+	margin: 0px;
+	padding: 30px;
+	font-size: 100px;
+	color: white;
+}
+
+h2{
+	margin: 0px;
+	padding: 20px;
+	background-color: white;
+}
+
+
+/* Form */
+
+form{
+	padding: 20px;
+	background-color: white;
+}
+
+
+/* Color of the * or description of the input */
+
+.description{ 
+	color: #FF0000; 
+}
+
+
+/* Onkunde Div */
+
+.onkundeDiv{
+	padding: 1px;
+	background-color: red;
+}
+
+
+/* Footer of Onkunde */
+
+.footer{
+	padding: 1px;
+	background-color: darkgrey;
+	text-align: center;
+}
+
+
+input{
+	float: right;
+	text-align: left;
+	padding-right: 100px;
+}
+
+.submit{
+	position: relative;
+	bottom: 20px;
+	float: right;
+	margin-right: 162px;
+	padding: 4px 20px;
+}
+
+
+button{
+	font-size: 20px;
+}
+
+
+.onkundeVerhaal{
+	margin: 0px;
+	padding-left: 20px;
+	background-color: blue;
+}
