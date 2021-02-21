@@ -3,8 +3,13 @@
 body{
 	background-color: grey;
 	margin: 0px auto;
-	padding: 0px 450px;
+	padding: 0px 400px;
 }
+
+
+
+
+/* De titel van de opdracht, en van het formulier */
 
 h1{
 	margin: 0px;
@@ -16,34 +21,31 @@ h1{
 h2{
 	margin: 0px;
 	padding: 20px;
-	background-color: white;
 }
 
 
-/* Form */
+/* De hele form voor de formulieren */
 
 form{
 	padding: 20px;
-	background-color: white;
 }
 
 
-/* Color of the * or description of the input */
+
+
+/* Kleur van de vereisten van de vragen */
 
 .description{ 
 	color: #FF0000; 
 }
 
 
-/* Onkunde Div */
+/* Menu en de footer van de formulieren */
 
-.onkundeDiv{
+.menu{
 	padding: 1px;
 	background-color: red;
 }
-
-
-/* Footer of Onkunde */
 
 .footer{
 	padding: 1px;
@@ -52,9 +54,14 @@ form{
 }
 
 
+
+
+/* De posisitie waar je de antwoorden in kan vullen, en de knop om de antwoorden te submitten */
+
 input{
 	float: right;
 	text-align: left;
+	margin-right: 20px;
 	padding-right: 100px;
 }
 
@@ -62,18 +69,40 @@ input{
 	position: relative;
 	bottom: 20px;
 	float: right;
-	margin-right: 162px;
+	margin-right: 181px;
 	padding: 4px 20px;
 }
 
 
-button{
-	font-size: 20px;
+
+
+/* Positie van het verhaal van de antwoorden van de gebruiker */
+
+.verhaal{
+	margin: 0px;
+	padding: 0px 0px 30px 20px;
 }
 
 
-.onkundeVerhaal{
-	margin: 0px;
-	padding-left: 20px;
-	background-color: blue;
+
+
+/* De styling van de knoppen voor de formulieren */
+
+.menu li a{
+	text-decoration: none;
+	color: black;
+	float: left;
+}
+
+.menu li{
+	display: inline-block;
+}
+
+.menu li:nth-of-type(1) {
+	margin: 0px 40px 0px -20px;
+}
+
+
+h2, form, .verhaal{
+	background-color: white;
 }
