@@ -1,30 +1,10 @@
 /* Browser */
 
 body{
-	background-color: grey;
+	background-color: #313130;
 	margin: 0px auto;
-	padding: 0px 400px;
+	padding: 0px 300px;
 }
-
-
-
-
-/* De titel van de opdracht, en van het formulier */
-
-h1{
-	margin: 0px;
-	padding: 30px;
-	font-size: 100px;
-	color: white;
-}
-
-h2{
-	margin: 0px;
-	padding: 20px;
-}
-
-
-/* De hele form voor de formulieren */
 
 form{
 	padding: 20px;
@@ -33,24 +13,38 @@ form{
 
 
 
-/* Kleur van de vereisten van de vragen */
+/* Titel en teksten */
 
-.description{ 
-	color: #FF0000; 
+h1{
+	font-family: Cursive;
+	padding: 30px;
+	font-size: 100px;
 }
+
+h2{
+	padding: 20px 20px 0px;
+}
+
+h1, h2, .verhaal{
+	margin: 0px;
+}
+
+.verhaal{
+	padding: 20px 0px 30px 20px;
+}
+
+
 
 
 /* Menu en de footer van de formulieren */
 
-.menu{
-	padding: 1px;
-	background-color: red;
+.footer{
+	background-color: #40403f;
+	text-align: center;
 }
 
-.footer{
-	padding: 1px;
-	background-color: darkgrey;
-	text-align: center;
+.menu, .footer{
+	padding: 1px 0px;
 }
 
 
@@ -68,19 +62,8 @@ input{
 .submit{
 	position: relative;
 	bottom: 20px;
-	float: right;
 	margin-right: 181px;
 	padding: 4px 20px;
-}
-
-
-
-
-/* Positie van het verhaal van de antwoorden van de gebruiker */
-
-.verhaal{
-	margin: 0px;
-	padding: 0px 0px 30px 20px;
 }
 
 
@@ -90,7 +73,6 @@ input{
 
 .menu li a{
 	text-decoration: none;
-	color: black;
 	float: left;
 }
 
@@ -103,6 +85,22 @@ input{
 }
 
 
+
+
+/* Kleuren voor de elementen, als de elementen alleen een andere kleur nodig hebben */ 
+
+.description{ 
+	color: #FF0000; 
+}
+
+.menu{
+	background-color: #992600;
+}
+
 h2, form, .verhaal{
 	background-color: white;
+}
+
+h1, .menu li a, .footer{
+	color: white
 }
