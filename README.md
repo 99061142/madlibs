@@ -19,7 +19,7 @@ This was a school project to learn PHP.
 
 What is the purpose?
 
-The user must answer the questions in each empty box with their imagination, when the user has answered everything, his answers will be put in the story.
+The user must answer the questions in each empty box with their imagination, when the user has answered everything, the answers will be put in the story.
 
 
 
