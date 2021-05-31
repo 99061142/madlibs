@@ -2,105 +2,114 @@
 
 body{
 	background-color: #313130;
-	margin: 0px auto;
 	padding: 0px 300px;
-}
-
-form{
-	padding: 20px;
+	margin: 0 auto;
 }
 
 
+/* Delete margins that are not needed */
+
+h1, h2, p{
+	margin:  0;
+}
 
 
-/* Titel en teksten */
+
+
+/* Page title */
 
 h1{
+	color: white;
 	font-family: Cursive;
 	padding: 30px;
+	padding-right: 0;
 	font-size: 100px;
 }
 
-h2{
-	padding: 20px 20px 0px;
-}
-
-h1, h2, .verhaal{
-	margin: 0px;
-}
-
-.verhaal{
-	padding: 20px 0px 30px 20px;
-}
 
 
 
+/* Navigation menu */
 
-/* Menu en de footer van de formulieren */
-
-.footer{
-	background-color: #40403f;
-	text-align: center;
-}
-
-.menu, .footer{
-	padding: 1px 0px;
-}
-
-
-
-
-/* De posisitie waar je de antwoorden in kan vullen, en de knop om de antwoorden te submitten */
-
-input{
-	float: right;
-	text-align: left;
-	margin-right: 20px;
-	padding-right: 100px;
-}
-
-.submit{
-	position: relative;
-	bottom: 20px;
-	margin-right: 181px;
-	padding: 4px 20px;
-}
-
-
-
-
-/* De styling van de knoppen voor de formulieren */
-
-.menu li a{
-	text-decoration: none;
-	float: left;
-}
-
-.menu li{
-	display: inline-block;
-}
-
-.menu li:nth-of-type(1) {
-	margin: 0px 40px 0px -20px;
-}
-
-
-
-
-/* Kleuren voor de elementen, als de elementen alleen een andere kleur nodig hebben */ 
-
-.description{ 
-	color: #FF0000; 
-}
-
-.menu{
+nav{
 	background-color: #992600;
+	padding: 20px 0px;
 }
 
-h2, form, .verhaal{
+ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul li a{
+	color: white;
+	text-decoration: none;
+}
+
+ul li a:nth-of-type(1){
+	margin-left:  20px;
+	margin-right: 40px;
+}
+
+
+
+
+/* Form */
+
+div{
+	padding-left: 20px;
 	background-color: white;
 }
 
-h1, .menu li a, .footer{
-	color: white
+/* Form title */
+
+h2{
+	padding: 20px 0px;
+}
+
+
+/* The whole div of each question */
+
+.question{
+	padding: 0;
+	margin:  5px 0px;
+}
+
+
+/* Input  of the uesr */
+
+.question input{
+	float:  right;
+	margin-right:  75px;
+	padding-right:  90px;
+}
+
+
+/* Description about the question */
+
+span{
+	color:  red;
+}
+
+
+/* Submit button */
+
+.submit{
+	padding:  5px 20px;
+	margin-top: calc(30px - 17.6px);
+	margin-bottom:  30px;
+	margin-left:  62.5%;
+}
+
+
+
+
+/* Footer */
+
+footer{
+	background-color: #40403f;
+	color:  white;
+	padding:  16px 0px;
+	text-align: center;
 }

@@ -1,13 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="nl">
-	<head>
-    	<link rel="stylesheet" href="styling.css">
-    	<title>B3W2L3</title> 
-  	</head>
-  <body>
-  	<?php
-      // Formulier paniek vragen
-      $vragenPaniek = [
+<?php
+     // Variable
+     $answerPaniek = [];
+
+
+     // Push empty strings to the array
+     for ($i = 1; $i <= 8; $i++){
+          array_push($answerPaniek, "");
+     }
+
+
+     // Makes an array with questions for the inputs
+      $questionPaniek = [
         "Welk dier zou je nooit als huisdier willen hebben?",
         "Wie is de belangrijkste persoon in je leven?",
         "In welk land zou je graag willen wonen?",
@@ -18,80 +21,90 @@
         "Wat is je favoriete bezigheid?"
       ];
 
-      // Antwoorden voor de forumulieren
-      $antwoordenPaniek = array("");
-      for ($arrayPusher = 0; $arrayPusher <= 6; $arrayPusher++){
-        array_push($antwoordenPaniek, "");
-      }
 
-
-      // Laat op het beeld zien of de vragen goed zijn ingevuld, en wat er fout is gegaan, als het niet goed is ingevuld.
-      if($_SERVER["REQUEST_METHOD"] == "POST"){
-        for($i = 0; $i <= 7; $i++){
-          if (empty($_POST["vraag$i"])){
-            $description[$i] = " De vraag moet ingevuld worden";
+     // check if the input is correct, and if not, the user gets an description what was wrong
+     if($_POST){
+          for($i = 0; $i < count($questionPaniek); $i++){
+               // Check if the input is empty
+               if(!$_POST["question$i"]){
+                    $description[$i] = "De vraag moet ingevuld worden";
+               }else{
+                    $answerPaniek[$i] = dataChecker($_POST["question$i"]);
+                    // Check if the input does not have characters in it
+                    if(!preg_match("/^[a-zA-Z-' ]*$/", $answerPaniek[$i])){
+                         $description[$i] = " De vraag mag geen tekens bevatten";
+                         $answerPaniek[$i] = "";
+                    }
+               }
           }
-          else{
-            $antwoordenPaniek[$i] = test_input($_POST["vraag$i"]);
-            // Checkt of de naam geen tekens heeft
-            if(!preg_match("/^[a-zA-Z-' ]*$/",$antwoordenPaniek[$i])){
-              $description[$i] = " De vraag mag geen tekens bevatten";
-              $antwoordenPaniek[$i] = "";
-            }
-          }
-        }
-      }
-    ?>
+     }
 
 
-    <h1>Mad libs</h1>
-    <div class="menu">
-      <ul>
-        <li><a href="#">Er heerst paniek...</a></li>
-        <li><a href="onkunde.php">Onkunde</a></li>
-      </ul>
-    </div>
-    <h2>Er heerst paniek...</h2><?php
-
-    // Als alle vragen nog niet goed zijn ingevuld blijven de vragen op het scherm staan
-    if(in_array("", $antwoordenPaniek)){ ?>
-      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"><?php
-        // Laat elke vraag op het scherm zien van het formulier "Onkunde"
-        for($i = 0; $i <= 7; $i++){ ?>
-          <?php echo $vragenPaniek[$i]; ?><input type="text" name="<?php echo "vraag$i"?>" value="<?php echo $antwoordenPaniek[$i];?>">
-          <span class="description">*<?php echo $description[$i]; ?></span><br><br>
-        <?php } ?>
-        <br><br>
-        <input class="submit" type="submit" name="submit" value="Versturen"><br>
-      </form><?php
-    }
-
-    // Als alle vragen van het formulier "Onkunde" zijn ingevuld, wordt de teskt in beeld gebracht
-    if(!in_array("", $antwoordenPaniek)){ ?>
-      <p class="verhaal">
-        Er heerst paniek in koninkrijk <?php echo $antwoordenPaniek[2]?>. Koning <?php echo $antwoordenPaniek[5]?> is ten einde raad en als Koning <?php echo $antwoordenPaniek[5]?> ten einde raad is, dan roept hij zijn ten-einde-raadsheer <?php echo $antwoordenPaniek[1]?>.<br><br>"<?php echo $antwoordenPaniek[1]?>! Het is een ramp! Het is een schande!"
-        <br><br>"Sire, Majesteit, Uwe Luidruchtigheid, wat is er aan de hand?"<br><br>"Mijn <?php echo $antwoordenPaniek[0]?> Is verdwenen! Zo maar, zonder waarschuwing. En ik had net <?php echo $antwoordenPaniek[4]?> voor hem gekocht!"<br><br>
-        "Majesteit, uw <?php echo $antwoordenPaniek[0]?> komt vast vanzelf weer terug?"<br><br>
-        "Ja da's leuk en aardig, maar hoe moet ik in de tussentijd <?php echo $antwoordenPaniek[7]?> leren?"<br><br>
-        "Maar Sire, daar kunt u toch uw <?php echo $antwoordenPaniek[6]?> voor gebruiken."<br><br>
-        "<?php echo $antwoordenPaniek[1]?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had."<br><br>
-        "<?php echo $antwoordenPaniek[3]?>, Sire."
-      </p> 
-    <?php } ?>
-     
-    <div class="footer">
-      <p>Xander© 2021</p>
-    </div>
+     // The input gets checked for characters that can break the code
+     function dataChecker($question){
+          $question = trim($question);
+          $question = stripslashes($question);
+          $question = htmlspecialchars($question);
+          return $question;
+     }
+?>
 
 
-    <?php
-      // Checkt of de vragen zijn ingevuld, en of er geen tekens bevatten.
-      function test_input($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-      }
-    ?>
-  </body>
+<!DOCTYPE HTML>
+<html lang="nl">
+	<head>
+    	<link rel="stylesheet" href="styling.css">
+    	<title>B3W2L3</title> 
+  	</head>
+     <body>
+          <h1>Mad libs</h1>
+          <nav>
+               <ul>
+                    <li>
+                         <a href="#">Er heerst paniek...</a>
+                         <a href="onkunde.php">Onkunde</a>
+                    </li>
+               </ul>
+         </nav>
+         <div>
+               <h2>Er heerst paniek...</h2>
+
+               <?php if(in_array("", $answerPaniek)){ ?>
+                    <form method="post">
+                         <?php for($i = 0; $i < count($questionPaniek); $i++){ ?>
+                              <div class="question">
+                                   <label for="<?= "question$i" ?>"><?= $questionPaniek[$i] ?></label>
+                                   <span>* <?= $description[$i] ?></span>
+                                   <input type="text" name="<?= "question$i" ?>" value="<?= $answerPaniek[$i] ?>">
+                              </div>
+                              <br>
+                         <?php } ?>
+                         <input class="submit" type="submit" name="submit" value="Versturen">
+                    </form>
+               <?php } 
+
+               if(!in_array("", $answerPaniek)){ ?>
+                    <p>
+                       Er heerst paniek in koninkrijk <?= $answerPaniek[2] ?>. Koning <?= $answerPaniek[5] ?> is ten einde raad en als Koning <?= $answerPaniek[5] ?> ten einde raad is, dan roept hij zijn ten-einde-raadsheer <?= $answerPaniek[1] ?>.
+                       <br><br>
+                       "<?= $answerPaniek[1] ?>! Het is een ramp! Het is een schande!"
+                       <br><br>
+                       "Sire, Majesteit, Uwe Luidruchtigheid, wat is er aan de hand?"
+                       <br><br>
+                       "Mijn <?= $answerPaniek[0]?> Is verdwenen! Zo maar, zonder waarschuwing. En ik had net <?= $answerPaniek[4] ?> voor hem gekocht!"
+                       <br><br>
+                       "Majesteit, uw <?= $answerPaniek[0] ?> komt vast vanzelf weer terug?"
+                       <br><br>
+                       "Ja da's leuk en aardig, maar hoe moet ik in de tussentijd <?= $answerPaniek[7]?> leren?"
+                       <br><br>
+                       "Maar Sire, daar kunt u toch uw <?= $answerPaniek[6] ?> voor gebruiken."
+                       <br><br>
+                       "<?= $answerPaniek[1]?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had."
+                       <br><br>
+                       "<?= $answerPaniek[3]?>, Sire."
+                    </p> 
+               <?php } ?>
+          </div>
+          <footer>Xander© 2021</footer>
+     </body>
 </html>
